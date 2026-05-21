@@ -1,5 +1,8 @@
 # Quick Reference (Commands & File Updates)
 
+- Only provide commit messages for files that have been modified, added, or deleted—never for unmodified files.
+- When adding or updating a global preference, always ask whether to update the ai_memories/memory-backup/preferences.md file to keep the backup in sync.
+
 - Always specify the target terminal and cwd in plain text before any terminal command code block.
 - For any command or commit response, include Terminal + Cwd + a terminal-ready code block; if any part is missing, reject the command response and ask for the missing detail.
 - When giving terminal commands in a multi-repo workspace, specify which terminal/cwd to use.
