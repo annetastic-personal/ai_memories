@@ -1,4 +1,13 @@
 # Quick Reference (Commands & File Updates)
+Place comments on a separate line above the code they describe, not inline at the end of the line.
+
+- Use custom Pomodoro workflow:
+  - 45-minute focused work sessions
+  - 15-minute breaks after each session
+  - 1-hour break after every three sessions
+  - First session starts with first message of the chat session
+  - Track and remind about Pomodoro timing in this chat
+  - For each new session, the first pomodoro starts with the user's first message unless otherwise specified.
 
 - Only provide commit messages for files that have been modified, added, or deleted—never for unmodified files.
 - When adding or updating a global preference, always ask whether to update the ai_memories/memory-backup/preferences.md file to keep the backup in sync.
@@ -17,11 +26,15 @@
 
 This file stores persistent instruction preferences for reuse across workspaces.
 
-- When providing any terminal command, always specify the target terminal and cwd in plain text before the code block, even if comments are disabled in the code block itself.
-
-- For workspace files (including repo backups), always use file editing tools (not the memory tool); reserve the memory tool for /memories/ directory only.
 - When adding or updating a global preference, always ask whether to update the ai_memories/memory-backup/preferences.md file to keep the backup in sync.
-
+- Trigger phrase: "session end check".
+- When user says "session end check":
+  - Review the session and recommend any global or repo-level memory updates, including a summary of in-progress work for easy resumption.
+  - Remind user to sync updated memories with the appropriate repo backups if changes were made.
+  - Point out any uncommitted or unpushed work in connected repositories.
+  - Remind user to close any open VPN connections.
+  - Remind user to close any open terminals connected to external servers.
+  - Deliver all reminders as a clear, human-friendly bullet list—no code, just actionable instructions.
 - Do not include comments in console command/code blocks for the user.
 
 - Confirm with user before changing any files.
@@ -130,3 +143,21 @@ Changes:
 
 - Add rule: never use backtick-wrapped code containing angle brackets or special characters in memory files; use plain prose instead.
 - Add rule: after every memory write, immediately verify with memory view to catch corruption before the session ends.
+
+### 2026-05-27
+
+Reason: Anne gets caught up in work and is forgetful, needs reminders to improve less than desirable habits
+
+Changes:
+
+- Add key phrase: "session end check".
+- Add instructions for end-of-session reminders covering memory updates, repo sync, uncommitted work, VPNs, and external terminals.
+
+### 2026-05-27 (session 2)
+
+Reason: Add custom Pomodoro workflow rules to support longer focus intervals and session-based tracking.
+
+Changes:
+
+- Add rules for 45-minute pomodoros, 15-minute breaks, 1-hour long break after three sessions, and session-based start.
+- Specify that reminders and tracking will occur in this chat.
