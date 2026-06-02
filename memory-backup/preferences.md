@@ -1,13 +1,5 @@
 # Quick Reference (Commands & File Updates)
-Place comments on a separate line above the code they describe, not inline at the end of the line.
-
-- Use custom Pomodoro workflow:
-  - 45-minute focused work sessions
-  - 15-minute breaks after each session
-  - 1-hour break after every three sessions
-  - First session starts with first message of the chat session
-  - Track and remind about Pomodoro timing in this chat
-  - For each new session, the first pomodoro starts with the user's first message unless otherwise specified.
+- Place comments on a separate line above the code they describe, not inline at the end of the line.
 
 - Only provide commit messages for files that have been modified, added, or deleted—never for unmodified files.
 - When adding or updating a global preference, always ask whether to update the ai_memories/memory-backup/preferences.md file to keep the backup in sync.
@@ -153,11 +145,3 @@ Changes:
 - Add key phrase: "session end check".
 - Add instructions for end-of-session reminders covering memory updates, repo sync, uncommitted work, VPNs, and external terminals.
 
-### 2026-05-27 (session 2)
-
-Reason: Add custom Pomodoro workflow rules to support longer focus intervals and session-based tracking.
-
-Changes:
-
-- Add rules for 45-minute pomodoros, 15-minute breaks, 1-hour long break after three sessions, and session-based start.
-- Specify that reminders and tracking will occur in this chat.
