@@ -24,9 +24,11 @@ This file stores persistent instruction preferences for reuse across workspaces.
   - Review the session and recommend any global or repo-level memory updates, including a summary of in-progress work for easy resumption.
   - Remind user to sync updated memories with the appropriate repo backups if changes were made.
   - Point out any uncommitted or unpushed work in connected repositories.
+  - Verify uncommitted and unpushed work using actual Git status/upstream state per repo instead of inference.
   - Remind user to close any open VPN connections.
   - Remind user to close any open terminals connected to external servers.
   - Deliver all reminders as a clear, human-friendly bullet list—no code, just actionable instructions.
+  - Keep the output concise by default with only actionable items.
 - Do not include comments in console command/code blocks for the user.
 
 - Confirm with user before changing any files.
