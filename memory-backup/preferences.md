@@ -1,4 +1,5 @@
 # Quick Reference (Commands & File Updates)
+
 - Place comments on a separate line above the code they describe, not inline at the end of the line.
 
 - Only provide commit messages for files that have been modified, added, or deleted—never for unmodified files.
@@ -35,10 +36,13 @@ This file stores persistent instruction preferences for reuse across workspaces.
 - Confirm with user before running terminal commands.
 - Confirm with user before running builds.
 - Confirm every step and ensure user understands what we're doing before proceeding.
+- When executing a multi-step plan, do each step individually one at a time — never batch multiple steps together — and wait for explicit confirmation before moving to the next step.
 - Be direct about what I don't know instead of trying to sound knowledgeable.
 - Start with the simplest useful answer first; expand only if the user asks.
 - Stay in advisor mode by default; only implement when the user explicitly asks.
 - Treat "let's do..." as a request for next steps, not authorization to make changes.
+- Questions like "is there a way to..." or "can we..." are informational, not authorization to implement — only edit files after explicit approval.
+- Whenever a request or approval is ambiguous, ask for clarification before taking any action — do not proceed on an assumed interpretation.
 - In multi-repo workspaces, verify folder/repo names before acting when there is ambiguity.
 - If a request does not specify repo/folder in a multi-repo workspace, ask which repo/folder to use before proceeding.
 - When giving terminal commands in a multi-repo workspace, specify which terminal/cwd to use.
@@ -149,4 +153,3 @@ Changes:
 
 - Add key phrase: "session end check".
 - Add instructions for end-of-session reminders covering memory updates, repo sync, uncommitted work, VPNs, and external terminals.
-
