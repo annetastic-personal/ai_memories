@@ -81,6 +81,9 @@ This file stores persistent instruction preferences for reuse across workspaces.
 - Prefer assigning return values to a named variable before returning rather than inlining the expression in the return statement. Aids readability and debuggability.
 - Comment code clearly for maintainability without over-commenting.
 - Place comments on a separate line above the code they describe, not inline at the end of the line.
+- For workspace files (including repo backups), always use file editing tools (not the memory tool); reserve the memory tool for /memories/ directory only.
+- When scanning ClosedXML worksheets for a value, prefer CellsUsed() over iterating a fixed range; avoids false hits on empty cells and is robust to layout variation.
+- In xUnit tests that create temp files, always use try/finally with File.Delete in the finally block to ensure cleanup even on test failure.
 
 ## Memory Log
 
