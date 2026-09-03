@@ -1,25 +1,11 @@
-# Quick Reference (Commands & File Updates)
-
-- Place comments on a separate line above the code they describe, not inline at the end of the line.
-
-- Only provide commit messages for files that have been modified, added, or deleted—never for unmodified files.
-- When adding or updating a global preference, always ask whether to update the ai_memories/memory-backup/preferences.md file to keep the backup in sync.
-
-- Always specify the target terminal and cwd in plain text before any terminal command code block.
-- For any command or commit response, include Terminal + Cwd + a terminal-ready code block; if any part is missing, reject the command response and ask for the missing detail.
-- When giving terminal commands in a multi-repo workspace, specify which terminal/cwd to use.
-- When providing a commit message, use: type(scope): summary, and include a body with bullet points in imperative mood.
-- Format git commit commands with exactly two -m flags: one for the summary, one for the full body as a multi-line string with each bullet on its own line.
-- Always tag command code blocks with a shell language (powershell) so the VS Code "Insert into Terminal" button appears.
-- Do not include comments in console command/code blocks for the user.
-- When saving or updating memories, always ask which repo the memory should go into and confirm before duplicating to ai_memories.
-- If a memory is repo-specific, do not copy it to ai_memories unless explicitly requested.
-
 # Preferences
 
 This file stores persistent instruction preferences for reuse across workspaces.
 
 - When adding or updating a global preference, always ask whether to update the ai_memories/memory-backup/preferences.md file to keep the backup in sync.
+- Only provide commit messages for files that have been modified, added, or deleted—never for unmodified files.
+- For every terminal command or commit command, identify the target terminal and cwd in plain text, then provide a terminal-ready code block using the target terminal's syntax and matching language tag. Prefer Bash unless the terminal is PowerShell or the task is Windows-specific. In multi-repository workspaces, identify the repository as well when it is not obvious.
+- When saving or updating memories, always ask which repo the memory should go into and confirm before duplicating to ai_memories.
 - Trigger phrase: "session end check".
 - When user says "session end check":
   - Review the session and recommend any global or repo-level memory updates, including a summary of in-progress work for easy resumption.
@@ -32,21 +18,11 @@ This file stores persistent instruction preferences for reuse across workspaces.
   - Keep the output concise by default with only actionable items.
 - Do not include comments in console command/code blocks for the user.
 
-- Confirm with user before changing any files.
-- Confirm with user before running terminal commands.
-- Confirm with user before running builds.
-- Confirm every step and ensure user understands what we're doing before proceeding.
-- When executing a multi-step plan, do each step individually one at a time — never batch multiple steps together — and wait for explicit confirmation before moving to the next step.
 - Be direct about what I don't know instead of trying to sound knowledgeable.
 - Start with the simplest useful answer first; expand only if the user asks.
-- Stay in advisor mode by default; only implement when the user explicitly asks.
-- Treat "let's do..." as a request for next steps, not authorization to make changes.
-- Questions like "is there a way to..." or "can we..." are informational, not authorization to implement — only edit files after explicit approval.
-- Whenever a request or approval is ambiguous, ask for clarification before taking any action — do not proceed on an assumed interpretation.
+- Stay in advisor mode by default. Treat requests, context, suggestions, and prior plans as non-authorization. Require explicit authorization before changing files, running terminal commands, running builds, or beginning each distinct step of a multi-step plan. Treat "go ahead", "do it", "make that change", and "run that command" as authorization for the specific action described. Treat questions such as "is there a way to..." or "can we..." as informational, not authorization to implement. Ask for clarification when the requested action or authorization is ambiguous.
 - In multi-repo workspaces, verify folder/repo names before acting when there is ambiguity.
 - If a request does not specify repo/folder in a multi-repo workspace, ask which repo/folder to use before proceeding.
-- When giving terminal commands in a multi-repo workspace, specify which terminal/cwd to use.
-- For any command or commit response, include Terminal + Cwd + a terminal-ready code block; if any part is missing, reject the command response and ask for the missing detail.
 - When saving memories, ask which repo the memory should go into.
 - If a memory is repo-specific, do not copy it to ai_memories unless explicitly requested.
 - Commit messages must use: type(scope): summary.
@@ -55,7 +31,6 @@ This file stores persistent instruction preferences for reuse across workspaces.
 - Commit message summary and body bullets must be written in imperative mood.
 - Present commit message suggestions in a terminal-ready code block for easy paste.
 - Format git commit commands with exactly two -m flags: one for the summary, one for the full body as a multi-line string with each bullet on its own line.
-- Always tag command code blocks with a shell language (powershell) so the VS Code "Insert into Terminal" button appears.
 - When working with wiki docs, use canonical GitHub Wiki page URLs (for example, https://github.com/odomaf/references/wiki/step-00-upfront-decisions) so pages open in rendered wiki view; avoid .md file-path links and avoid %2F-encoded wiki path links unless explicitly verified.
 - When asked for a commit message only, provide only the commit command — do not include git add or any other commands.
 - Trigger phrase: "Prefs Check".
@@ -77,7 +52,6 @@ This file stores persistent instruction preferences for reuse across workspaces.
 - After SDK installs, open a new terminal (or restart VS Code) before rechecking `dotnet --list-sdks`.
 - In planning docs, use completion timestamps in this format: `YYYY-MM-DD HH:MM (UTC±HH:MM)`.
 - Prefer separate files for implementation plan and implementation timeline when both are maintained.
-- Bash is the default for helper scripts and tools (e.g., coverage reports, automation). Use bash unless there's a specific reason to use PowerShell (Windows-only requirement, repo convention, etc.).
 - When running dotnet test in a multi-project solution, always specify the test project path explicitly to avoid MSB1008 "Only one project can be specified" error.
 - Top-level statement programs generate a synthetic Main$ method that shows up in coverage with 0% and a high CRAP score. Exclude it via runsettings Exclude tag with [AssemblyName]Program under XPlat Code Coverage configuration.
 - When writing to memory files, never include backtick-wrapped code containing angle brackets or special characters (e.g., angle-bracket identifiers). Describe them in plain prose instead to avoid memory file corruption.
