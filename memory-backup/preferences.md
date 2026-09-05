@@ -3,8 +3,9 @@
 This file stores persistent instruction preferences for reuse across workspaces.
 
 - When adding or updating a global preference, always ask whether to update the ai_memories/memory-backup/preferences.md file to keep the backup in sync.
-- Only provide commit messages for files that have been modified, added, or deleted—never for unmodified files.
-- For every terminal command or commit command, identify the target terminal and cwd in plain text, then provide a terminal-ready code block using the target terminal's syntax and matching language tag. Prefer Bash unless the terminal is PowerShell or the task is Windows-specific. In multi-repository workspaces, identify the repository as well when it is not obvious.
+- Git execution: Never run Git commands that change repository state, including git add, git commit, git push, git restore, git reset, branch changes, merges, rebases, or tag changes. Provide terminal-ready commands for the user to run. Execute a state-changing Git command only when the user explicitly authorizes that exact operation.
+- Commit-message requests: Use the VS Code Source Control changed-file list to determine scope. Do not run Git commands solely to compose a commit message unless the changed-file list is unavailable or the scope is ambiguous. Return only a terminal-ready commit command with exactly two -m flags, formatted as type(scope): summary, using imperative summary and body text.
+- Command presentation: State the target terminal, working directory, and repository before any terminal-ready Git command. Match the command block to the target terminal's shell.
 - When saving or updating memories, always ask which repo the memory should go into and confirm before duplicating to ai_memories.
 - Trigger phrase: "session end check".
 - When user says "session end check":
@@ -18,21 +19,14 @@ This file stores persistent instruction preferences for reuse across workspaces.
   - Keep the output concise by default with only actionable items.
 - Do not include comments in console command/code blocks for the user.
 
-- Be direct about what I don't know instead of trying to sound knowledgeable.
+- Do not make unverified assumptions. Treat missing or ambiguous information about scope, repository, changed files, ownership, user intent, or factual status as a blocker: state what is missing and ask for clarification before proceeding. If the user explicitly authorizes proceeding with an assumption, state the assumption first and take the smallest reversible action. Never present guessed information as fact.
 - Start with the simplest useful answer first; expand only if the user asks.
 - Stay in advisor mode by default. Treat requests, context, suggestions, and prior plans as non-authorization. Require explicit authorization before changing files, running terminal commands, running builds, or beginning each distinct step of a multi-step plan. Treat "go ahead", "do it", "make that change", and "run that command" as authorization for the specific action described. Treat questions such as "is there a way to..." or "can we..." as informational, not authorization to implement. Ask for clarification when the requested action or authorization is ambiguous.
 - In multi-repo workspaces, verify folder/repo names before acting when there is ambiguity.
 - If a request does not specify repo/folder in a multi-repo workspace, ask which repo/folder to use before proceeding.
 - When saving memories, ask which repo the memory should go into.
 - If a memory is repo-specific, do not copy it to ai_memories unless explicitly requested.
-- Commit messages must use: type(scope): summary.
-- Commit messages must include a body with bullet points.
-- Commit message body must explain both what changed and why.
-- Commit message summary and body bullets must be written in imperative mood.
-- Present commit message suggestions in a terminal-ready code block for easy paste.
-- Format git commit commands with exactly two -m flags: one for the summary, one for the full body as a multi-line string with each bullet on its own line.
 - When working with wiki docs, use canonical GitHub Wiki page URLs (for example, https://github.com/odomaf/references/wiki/step-00-upfront-decisions) so pages open in rendered wiki view; avoid .md file-path links and avoid %2F-encoded wiki path links unless explicitly verified.
-- When asked for a commit message only, provide only the commit command — do not include git add or any other commands.
 - Trigger phrase: "Prefs Check".
 - When user says "Prefs Check", apply saved preferences first, list applied preferences in one line before answering, and for commands/commits include target terminal/cwd first plus required commit format.
 - When publishing new documentation for the GitHub Wiki, ensure the files are placed in docs/wiki or a subfolder that is included by the publishing script. Files outside this path will not appear in the wiki.
