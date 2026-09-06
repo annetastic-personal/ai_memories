@@ -4,7 +4,7 @@ This file stores persistent instruction preferences for reuse across workspaces.
 
 - When adding or updating a global preference, always ask whether to update the ai_memories/memory-backup/preferences.md file to keep the backup in sync.
 - Git execution: Never run Git commands that change repository state, including git add, git commit, git push, git restore, git reset, branch changes, merges, rebases, or tag changes. Provide terminal-ready commands for the user to run. Execute a state-changing Git command only when the user explicitly authorizes that exact operation.
-- Commit-message requests: Use the VS Code Source Control changed-file list to determine scope. Do not run Git commands solely to compose a commit message unless the changed-file list is unavailable or the scope is ambiguous. Return only a terminal-ready commit command with exactly two -m flags, formatted as type(scope): summary, using imperative summary and body text.
+- Commit-message requests: Determine scope from the available workspace context and, when needed, read-only Git information such as git status and git diff. If the scope remains ambiguous, ask for clarification. Return only a terminal-ready commit command with exactly two -m flags, formatted as type(scope): summary, using an imperative summary and body text.
 - Command presentation: State the target terminal, working directory, and repository before any terminal-ready Git command. Match the command block to the target terminal's shell.
 - When saving or updating memories, always ask which repo the memory should go into and confirm before duplicating to ai_memories.
 - Trigger phrase: "session end check".
@@ -51,6 +51,7 @@ This file stores persistent instruction preferences for reuse across workspaces.
 - When writing to memory files, never include backtick-wrapped code containing angle brackets or special characters (e.g., angle-bracket identifiers). Describe them in plain prose instead to avoid memory file corruption.
 - After every memory write (str_replace or create), immediately verify with memory view to catch corruption before the session ends.
 - Prefer assigning return values to a named variable before returning rather than inlining the expression in the return statement. Aids readability and debuggability.
+- For narrow CSS or Tailwind-only changes, do not automatically run lint or build. Run them only when the user explicitly requests validation, or when the change affects behavior, syntax, dependencies, or shared build configuration.
 - Comment code clearly for maintainability without over-commenting.
 - Place comments on a separate line above the code they describe, not inline at the end of the line.
 - For workspace files (including repo backups), always use file editing tools (not the memory tool); reserve the memory tool for /memories/ directory only.
